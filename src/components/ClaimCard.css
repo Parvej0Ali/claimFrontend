@@ -1,0 +1,42 @@
+.claim-card {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.pending {
+    background-color: #ffeb3b; /* Yellow */
+}
+
+.approved {
+    background-color: #4caf50; /* Green */
+    color: white;
+}
+
+.rejected {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.claim-title {
+    margin-top: 0;
+}
+
+.claim-details {
+    margin-bottom: 4px;
+}
+.pending {
+    background-color: #2196f3; /* Blue */
+    color: white;
+}
+
+.approved {
+    background-color: #4caf50; /* Green */
+    color: white;
+}
+
+.rejected {
+    background-color: #f44336; /* Red */
+    color: white;
+}
