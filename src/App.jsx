@@ -11,6 +11,7 @@ import { Footer } from "./components/Footer";
 import { Logout } from "./pages/Logout";
 import { UserDashboard } from "./pages/UserDashboard";
 import { AdminPage } from "./pages/Admin";
+import { NewPolicy } from "./pages/newPolicy";
 const App=()=>{
   return(
     <>
@@ -26,6 +27,7 @@ const App=()=>{
         <Route path="/logout" element={<Logout/>}/>
         <Route path="/admin" element={<AdminPage/>}/>
         <Route path="/userdashboard" element={<UserDashboard/>}/>
+        <Route path="/newPolicy" element={<NewPolicy/>}/>
         <Route path="*" element={<Error/>}/>
       </Routes>
       <Footer/>

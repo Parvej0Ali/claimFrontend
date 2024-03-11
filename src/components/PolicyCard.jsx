@@ -8,7 +8,7 @@ const PolicyCard = ({ policy }) => {
     const expiry=policy.expiresOn
     const date = new Date(expiry);
     const formattedDate = date.toISOString().split('T')[0];
-    console.log(formattedDate); // Output: "2034-03-09"
+    console.log("date from policy Card:", formattedDate);
 
     return (
         <div className="policy-card">

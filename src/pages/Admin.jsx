@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { NavLink } from "react-router-dom"
 
 export const AdminPage = () => {
     const location = useLocation();
@@ -26,7 +27,7 @@ export const AdminPage = () => {
 
                 const data = await response.json();
                 // Filter out claims with status 'approved' or 'rejected'
-                const filteredClaims = data.filter((claim) => claim.status !== 'approved' && claim.status !== 'rejected');
+                const filteredClaims = data.filter((claim) => claim.status !== 'rejec');
                 setClaims(filteredClaims);
             } catch (error) {
                 console.error('Error fetching claims:', error);
@@ -99,6 +100,12 @@ export const AdminPage = () => {
     return (
         <div>
             <h1>Welcome to Admin Page</h1>
+            <button className="btn btn-submit" style={{ color: 'black', backgroundColor: '#FFF8E1' }}>
+                    <NavLink to="/newPolicy">Create New Policy</NavLink>
+            </button>
+
+
+            <h1>All Claims</h1>
             <div className="claim-cards">
                 {claims.map((claim) => (
                     <div key={claim._id} className="claim-card">
@@ -107,7 +114,7 @@ export const AdminPage = () => {
                         <p>Amount: {claim.amount}</p>
                         <p>Status: {claim.status}</p>
                         <div className="button-group">
-                            <button
+                            {/* <button
                                 onClick={() => handleApproveClaim(claim._id, claim.userId, claim.policyId, claim.amount)}
                                 style={{ backgroundColor: 'green' }}
                             >
@@ -118,7 +125,23 @@ export const AdminPage = () => {
                                 style={{ backgroundColor: 'red' }}
                             >
                                 Reject
-                            </button>
+                            </button> */}
+                            {claim.status === 'pending' && (
+                                <>
+                                <button
+                                    onClick={() => handleApproveClaim(claim._id, claim.userId, claim.policyId, claim.amount)}
+                                    style={{ backgroundColor: 'green' }}
+                                >
+                                    Approve
+                                </button>
+                                <button
+                                    onClick={() => handleRejectClaim(claim._id, claim.userId, claim.policyId, claim.amount)}
+                                    style={{ backgroundColor: 'red' }}
+                                >
+                                    Reject
+                                </button>
+                                </>
+                            )}
                         </div>
                     </div>
                 ))}

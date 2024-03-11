@@ -110,8 +110,11 @@ export const UserDashboard = () => {
             throw new Error('Failed to buy policy');
         }
         const data = await response.json();
+        //setUserPolicies(prevPolicies => [...prevPolicies, data]);
+        //console.log(data);
         setUserPolicies([...userPolicies, data]);
-        window.location.reload();
+
+        // window.location.reload();
     } catch (error) {
         console.error('Error buying policy:', error);
     }
