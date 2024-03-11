@@ -26,7 +26,7 @@ const handleSubmit=async (e)=>{
     e.preventDefault();
     console.log(user)
     try {
-        const response=await fetch(`https://claim-backend1.vercel.app/api/auth/register`,{
+        const response=await fetch(`https://claimbackend1.onrender.com/api/auth/register`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -73,13 +73,13 @@ const handleSubmit=async (e)=>{
         <section>
             <main>
                 <div className="Registration grid-two-cols">
-                    <div className="container grid grid-two-cols">
-                        <div className="registration image">
+                    <div className="container">
+                        {/* <div className="registration image">
                             <img src="/regis.jpeg" alt=" a girl is try to do reges" 
                             width="500"
                             height="500"
                             />
-                        </div>
+                        </div> */}
                         <div className="registraiton form">
                             <h1 className="main headind mb-3">Registration Form</h1>
                             <br/>

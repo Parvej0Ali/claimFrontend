@@ -25,7 +25,7 @@ const handleInput=(e)=>{
 const handleSubmit= async (e)=>{
     e.preventDefault();
     try {
-        const response = await fetch("https://claim-backend1.vercel.app/api/auth/signin", {
+        const response = await fetch("https://claimbackend1.onrender.com/api/auth/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

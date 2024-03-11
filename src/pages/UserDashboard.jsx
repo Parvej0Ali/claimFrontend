@@ -23,7 +23,7 @@ export const UserDashboard = () => {
     useEffect(() => {
       const fetchUserPolicies = async () => {
           try {
-              const response = await fetch(`https://claim-backend1.vercel.app/api/policies/showPoliciesByUserId/${userId}`, {
+              const response = await fetch(`https://claimbackend1.onrender.com/api/policies/showPoliciesByUserId/${userId}`, {
                   headers: {
                       Authorization: `Bearer ${token}`,
                   },
@@ -48,7 +48,7 @@ export const UserDashboard = () => {
       };
       const fetchAllPolicies = async () => {
         try {
-            const response = await fetch(`https://claim-backend1.vercel.app/api/policies/showAllPolicies`, {
+            const response = await fetch(`https://claimbackend1.onrender.com/api/policies/showAllPolicies`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -68,7 +68,7 @@ export const UserDashboard = () => {
     // fetch claims by userid
     const fetchClaimsByUserId = async () => {
       try {
-          const response = await fetch(`https://claim-backend1.vercel.app/api/claims/claimsByUserId/${userId}`, {
+          const response = await fetch(`https://claimbackend1.onrender.com/api/claims/claimsByUserId/${userId}`, {
               headers: {
                   Authorization: `Bearer ${token}`,
               },
@@ -95,7 +95,7 @@ export const UserDashboard = () => {
   }, [userId, token]);
   const handleBuyPolicy = async (policyId) => {
     try {
-        const response = await fetch(`https://claim-backend1.vercel.app/api/purchase/buyPolicy`, {
+        const response = await fetch(`https://claimbackend1.onrender.com/api/purchase/buyPolicy`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ const handleClaimAmountChange = (event) => {
 const handleClaim = async () => {
   try {
     // console.log('cajshjasfhkjhjfa' , policyId)
-      const response = await fetch(`https://claim-backend1.vercel.app/api/claims/createClaim`, {
+      const response = await fetch(`https://claimbackend1.onrender.com/api/claims/createClaim`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

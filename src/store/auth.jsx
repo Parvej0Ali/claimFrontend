@@ -28,7 +28,7 @@ export const  AuthProvider = ({children})=>{
 
     const getServices=async ()=>{
         try {
-            const response= await fetch("https://claim-backend1.vercel.app/api/policies/showAllPolicies",{
+            const response= await fetch("https://claimbackend1.onrender.com/api/policies/showAllPolicies",{
                 method:"GET",
             });
             if(response.ok){

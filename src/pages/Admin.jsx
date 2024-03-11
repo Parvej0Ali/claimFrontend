@@ -11,7 +11,7 @@ export const AdminPage = () => {
     useEffect(() => {
         const fetchClaims = async () => {
             try {
-                const response = await fetch('https://claim-backend1.vercel.app/api/claims/allClaims', {
+                const response = await fetch('https://claimbackend1.onrender.com/api/claims/allClaims', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export const AdminPage = () => {
 
     const handleApproveClaim = async (claimId, userId, policyId, amount) => {
         try {
-            const response = await fetch(`https://claim-backend1.vercel.app/api/claims/updateClaim/${claimId}`, {
+            const response = await fetch(`https://claimbackend1.onrender.com/api/claims/updateClaim/${claimId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export const AdminPage = () => {
 
     const handleRejectClaim = async (claimId, userId, policyId, amount) => {
         try {
-            const response = await fetch(`https://claim-backend1.vercel.app/api/claims/updateClaim/${claimId}`, {
+            const response = await fetch(`https://claimbackend1.onrender.com/api/claims/updateClaim/${claimId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
