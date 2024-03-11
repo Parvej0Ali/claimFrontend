@@ -47,7 +47,6 @@ const handleSubmit= async (e)=>{
             }else{
                 navigate("/userdashboard",{state:{userId:userId, username:username}});
             }
-            //tusharcode
             
           }else if (response.status === 400) {
             const data = await response.json();

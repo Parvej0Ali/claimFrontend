@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const NewPolicy = () => {
+    
     const [policy, setPolicy] = useState({
         policyName: "",
         duration: "",
@@ -35,7 +37,7 @@ export const NewPolicy = () => {
             if (response.ok) {
                 // Policy created successfully
                 alert('Policy created successfully');
-                navigate('/Home'); // Navigate to admin page or any other desired location
+                navigate('/admin',{ state: {userId:userId}}); // Navigate to admin page or any other desired location
             } else {
                 // Policy creation failed
                 throw new Error('Failed to create policy');

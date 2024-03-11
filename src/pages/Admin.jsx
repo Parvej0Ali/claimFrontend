@@ -7,7 +7,7 @@ export const AdminPage = () => {
     const userId = location.state.userId;
     const token = localStorage.getItem('token');
     const [claims, setClaims] = useState([]);
-    
+    const [allPolicies, setAllPolicies] = useState([]);
     //console.log(username)
     useEffect(() => {
         const fetchClaims = async () => {
@@ -33,8 +33,27 @@ export const AdminPage = () => {
                 console.error('Error fetching claims:', error);
             }
         };
-
+        const fetchAllPolicies = async () => {
+            try {
+                const response = await fetch(`https://claimbackend1.onrender.com/api/policies/showAllPolicies`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch all policies');
+                }
+                const data = await response.json();
+                console.log('this is from show all policy admin', data);
+                setAllPolicies(data);
+                
+            } catch (error) {
+                console.error('Error fetching all policies:', error);
+            }
+        };
+    
         fetchClaims();
+        fetchAllPolicies();
     }, [userId, token]);
 
     const handleApproveClaim = async (claimId, userId, policyId, amount) => {
@@ -97,10 +116,31 @@ export const AdminPage = () => {
         }
     };
 
+    //delete policy
+    const handleDelete = async (policyId) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/policies/policies/${policyId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete policy');
+            }
+
+            // Remove the deleted policy from the state
+            setAllPolicies(allPolicies.filter((policy) => policy._id !== policyId));
+        } catch (error) {
+            console.error('Error deleting policy:', error);
+        }
+    };
     return (
         <div>
             <h1>Welcome to Admin Page</h1>
             <button className="btn btn-submit" style={{ color: 'black', backgroundColor: '#FFF8E1' }}>
+                {/* navigate("/admin",{state:{userId:userId}}) */}
                     <NavLink to="/newPolicy">Create New Policy</NavLink>
             </button>
 
@@ -146,6 +186,22 @@ export const AdminPage = () => {
                     </div>
                 ))}
             </div>
+
+
+            <h1>All Policies</h1>
+            <div className="policy-cards">
+            {allPolicies.map((policy) => (
+            <div key={policy._id} className="policy-card">
+                <h2>Policy ID: {policy._id}</h2>
+                <p>Policy Name: {policy.policyName}</p>
+                <p>Duration: {policy.duration} years</p>
+                <p>Total Amount: {policy.totalAmount}</p>
+                <div className="button-group">
+                    <button onClick={() => handleDelete(policy._id)}>Delete</button>
+                </div>
+            </div>
+            ))}
+        </div>
         </div>
     );
 };
